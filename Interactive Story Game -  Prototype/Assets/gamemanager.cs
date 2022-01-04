@@ -5,12 +5,13 @@ using UnityEngine.Video;
 
 public class gamemanager : MonoBehaviour
 {
-    public enum State{
+    private enum State{
         Intro, First_Talk, Puzzle, Final
     }
-    State state; 
-    
-    public GameObject[] clips; 
+    State state;
+     
+    [SerializeField]
+    private GameObject[] clips; 
     
     float timeSinceStart = 0; 
 
@@ -22,20 +23,12 @@ public class gamemanager : MonoBehaviour
     private void Update()
     {
         StateHandler(); 
-        Debug.Log(timeSinceStart); 
+        //Debug.Log(timeSinceStart); 
         timeSinceStart += Time.deltaTime; 
         //StateHandler(state);
         if(timeSinceStart >= 20)
         {
             state = State.First_Talk; 
-        }
-        if(timeSinceStart >= 25)
-        {
-            state = State.Puzzle; 
-        }
-        if(timeSinceStart >= 30)
-        {
-            state = State.Final; 
         }
     }
 
@@ -53,6 +46,8 @@ public class gamemanager : MonoBehaviour
                 clips[1].SetActive(true);
                 clips[0].SetActive(false);  
                 Debug.Log(state); 
+                //enable chat system
+
                 break; 
             case State.Puzzle: 
                 //play the puzzle 
