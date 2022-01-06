@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video; 
 
-public class gamemanager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     private enum State{
         Intro, First_Talk, Puzzle, Final
     }
     State state;
-     
+    
+    [SerializeField]
+    private ChatSystem chatSys; 
     [SerializeField]
     private GameObject[] clips; 
     
@@ -47,6 +49,7 @@ public class gamemanager : MonoBehaviour
                 clips[0].SetActive(false);  
                 Debug.Log(state); 
                 //enable chat system
+                chatSys.enabled = true; 
 
                 break; 
             case State.Puzzle: 
