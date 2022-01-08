@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     State state;
     
     [SerializeField]
-    private ChatSystem chatSys; 
+    private ChatEventController chatSys; 
     [SerializeField]
     private GameObject[] clips; 
     
