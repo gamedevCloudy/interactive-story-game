@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ChatEventController chatSys; 
     [SerializeField]
+    private GameObject chatButtons; 
+    [SerializeField]
     private GameObject[] clips; 
     
     float timeSinceStart = 0; 
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log(state); 
                 //enable chat system
                 chatSys.enabled = true; 
+                chatButtons.SetActive(true); 
 
                 break; 
             case State.Puzzle: 
