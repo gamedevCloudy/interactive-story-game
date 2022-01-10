@@ -2858,6 +2858,7 @@ MonoBehaviour:
   play: {fileID: 1095681525}
   pause: {fileID: 2124591209}
   controls: {fileID: 1055734719}
+  controls2: {fileID: 117899228}
   darkScreen: {fileID: 1375697040}
 --- !u!114 &1315168760
 MonoBehaviour:
