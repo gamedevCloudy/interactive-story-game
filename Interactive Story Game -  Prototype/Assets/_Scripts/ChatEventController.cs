@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ChatEventController : MonoBehaviour
 {
+    [SerializeField]
+    private GameManager manager; 
     [SerializeField] 
     private Transform chatHolder; 
     private int currentChatEvent = 0; 
@@ -22,6 +24,11 @@ public class ChatEventController : MonoBehaviour
             currentChatEvent += 1; 
             Debug.Log(currentChatEvent + " Chat");
             chatHolder.GetChild((currentChatEvent)).gameObject.SetActive(true);      
+        }
+        if(currentChatEvent >= 6)
+        {
+            chatHolder.gameObject.SetActive(false); 
+            manager.SetPuzzle(); 
         }
     }  
     public void PreviousChat()

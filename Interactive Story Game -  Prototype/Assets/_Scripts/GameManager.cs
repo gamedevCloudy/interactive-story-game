@@ -6,18 +6,27 @@ using UnityEngine.Video;
 public class GameManager : MonoBehaviour
 {
     private enum State{
-        Intro, First_Talk, Puzzle, Final
+        Intro, First_Talk, Puzzle, Last_Talk, Final
     }
     State state;
     
     [SerializeField]
     private ChatEventController chatSys; 
     [SerializeField]
+    private ChatEventController chatSys1; 
+    [SerializeField]
     private GameObject chatButtons; 
     [SerializeField]
+    private GameObject chatButtons1; 
+    public GameObject pause; 
+    [SerializeField]
     private GameObject[] clips; 
+
+    public GameObject puzzle; 
     
     float timeSinceStart = 0; 
+
+    int chatCtrl = 0; 
 
 
     private void Start()
@@ -52,19 +61,42 @@ public class GameManager : MonoBehaviour
                 Debug.Log(state); 
                 //enable chat system
                 chatSys.enabled = true; 
-                chatButtons.SetActive(true); 
-
+                if(chatCtrl == 0)
+                {
+                    pause.SetActive(true); 
+                    chatButtons.SetActive(true); 
+                    chatCtrl +=1; 
+                }
                 break; 
             case State.Puzzle: 
                 //play the puzzle 
-                clips[2].SetActive(true);
-                clips[1].SetActive(false);  
+                Debug.Log(state); 
+            
+                // clips[2].SetActive(true);
+                // clips[1].SetActive(false);  
+                puzzle.SetActive(true); 
                 break; 
             case State.Final:
                 //play last clip 
+                
+                puzzle.SetActive(false); 
                 clips[3].SetActive(true);
                 clips[2].SetActive(false);   
+                chatSys1.enabled = true; 
+                chatButtons1.SetActive(true); 
+                  //  chatCtrl +=1; 
                 break;  
        } 
+    }
+
+    public void SetPuzzle()
+    {
+        chatButtons.SetActive(false); 
+        state = State.Puzzle; 
+    }
+
+    public void Finale()
+    {
+        state = State.Final; 
     }
 }
