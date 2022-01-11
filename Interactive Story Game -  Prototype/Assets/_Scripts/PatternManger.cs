@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PatternManger : MonoBehaviour
 {
+    public PasswordController passCtrl; 
+    private int passInt = 0; 
     public PasswordManager pass; 
     public GameObject linePrefab; 
     public Canvas canvas; 
@@ -78,7 +80,7 @@ public class PatternManger : MonoBehaviour
     {
         foreach (var line in lines)
         {
-            Debug.Log("There"); 
+            //Debug.Log("There"); 
             if(line.id == circle.id)
             {
                 return; 
@@ -97,11 +99,6 @@ public class PatternManger : MonoBehaviour
     IEnumerator Release()
     {
         enabled = false; 
-
-        // while(true)
-        // {
-        //     yield return new WaitForEndOfFrame(); 
-        // }
         yield return new WaitForSeconds(3); 
 
         foreach( var circle in circles)
@@ -132,6 +129,7 @@ public class PatternManger : MonoBehaviour
             
             lineOnEditRcTs.rotation = Quaternion.FromToRotation(Vector2.up,
                 (idf.transform.localPosition - circleOnEdit.transform.localPosition).normalized); 
+            
             TrySetLineEdit(idf); 
         }
     }
@@ -141,15 +139,11 @@ public class PatternManger : MonoBehaviour
     }
     public void OnMouseDownCircle(CircleIdentifier idf)
     {
-       // Debug.Log(idf.id); 
-
         unlocking = true; 
         TrySetLineEdit(idf); 
-        //CreateLine(idf.transform.localPosition, idf.id); 
     }
     public void OnMouseUpCircle(CircleIdentifier idf)
     {
-        //Debug.Log(idf.id); 
          if(enabled == false)
         {
             return; 
@@ -159,16 +153,14 @@ public class PatternManger : MonoBehaviour
             foreach( var line in lines)
             {
                 EnableColorFade( circles[line.id].gameObject.GetComponent<Animator>()); 
-
                 //check password
                 pass.inputPattern.Add(line.id); 
-                
-
-               
             }
             
             bool Verified = pass.VerifyPattern(); 
             Debug.Log(Verified); 
+            //Load Next Scene or enable new pass manager
+
             
             
             Destroy(lines[lines.Count -1].gameObject); 
@@ -178,11 +170,12 @@ public class PatternManger : MonoBehaviour
             {
                 EnableColorFade(line.GetComponent<Animator>()); 
             }
-
             StartCoroutine(Release()); 
+            // if(passInt == 0 && Verified == true){
+            //     passCtrl.NextLock(); 
+            //     passInt += 1; 
+            // }
         }
         unlocking = false; 
-
-        
     }
 }

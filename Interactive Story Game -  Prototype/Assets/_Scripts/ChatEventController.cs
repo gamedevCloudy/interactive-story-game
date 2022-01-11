@@ -27,8 +27,7 @@ public class ChatEventController : MonoBehaviour
         }
         if(currentChatEvent >= 6)
         {
-            chatHolder.gameObject.SetActive(false); 
-            manager.SetPuzzle(); 
+            StartCoroutine("PuzzleState"); 
         }
     }  
     public void PreviousChat()
@@ -40,5 +39,12 @@ public class ChatEventController : MonoBehaviour
         Debug.Log(currentChatEvent + " Chat");
         chatHolder.GetChild((currentChatEvent)).gameObject.SetActive(true); 
         }
+    }
+
+    IEnumerator PuzzleState()
+    {
+        yield return new WaitForSeconds(2); 
+        chatHolder.gameObject.SetActive(false); 
+        manager.SetPuzzle(); 
     }
 }

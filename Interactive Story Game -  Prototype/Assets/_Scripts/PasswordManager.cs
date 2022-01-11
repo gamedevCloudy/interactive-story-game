@@ -9,9 +9,11 @@ public class PasswordManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        correctPattern.Add(0);
-        correctPattern.Add(1); 
-        correctPattern.Add(2); 
+        // correctPattern.Add(0);
+        // correctPattern.Add(1); 
+        // correctPattern.Add(2); 
+
+        //correctPattern2.Add(0)
     }
 
     // Update is called once per frame
@@ -30,8 +32,17 @@ public class PasswordManager : MonoBehaviour
                 {
                     return true; 
                 }
+            }  
+        }
+        if(correctPattern[0] == inputPattern[2])
+        {
+            if(correctPattern[1] == inputPattern[1])
+            {
+                if(correctPattern[2] == inputPattern[0])
+                {
+                    return true; 
+                }
             }
-              
         }
 
         return false; 
