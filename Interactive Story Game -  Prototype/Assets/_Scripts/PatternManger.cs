@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class PatternManger : MonoBehaviour
 {
-    public PasswordController passCtrl; 
-    private int passInt = 0; 
+    //public PasswordController passCtrl; 
+    //private int passInt = 0; 
     public PasswordManager pass; 
     public GameObject linePrefab; 
     public Canvas canvas; 
 
     private Dictionary<int,CircleIdentifier> circles;
-    
     private List<CircleIdentifier> lines; 
 
     private GameObject lineOnEdit;
     private RectTransform lineOnEditRcTs; 
     private CircleIdentifier circleOnEdit; 
 
-     
     private bool unlocking; 
     private bool enabled = true; 
 
-    // Start is called before the first frame update
     void Start()
     {
         circles = new Dictionary<int, CircleIdentifier>(); 
@@ -36,16 +33,10 @@ public class PatternManger : MonoBehaviour
             identifier.id = i; 
             circles.Add(i, identifier); 
         }
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //check selelcted dots
-        // connect dots
-        //verify if correct
-        //move to next pattern
         if(enabled == false)
         {
             return; 
@@ -80,7 +71,6 @@ public class PatternManger : MonoBehaviour
     {
         foreach (var line in lines)
         {
-            //Debug.Log("There"); 
             if(line.id == circle.id)
             {
                 return; 
@@ -115,13 +105,13 @@ public class PatternManger : MonoBehaviour
         lineOnEdit = null; 
         lineOnEditRcTs = null; 
         circleOnEdit = null;
-
+        pass.VerifyPattern(); 
+        pass.inputPattern.Clear(); 
         enabled = true; 
     }
 
     public void OnMouseEnterCircle(CircleIdentifier idf)
     {
-        //Debug.Log(idf.id); 
         if(unlocking)
         {
             lineOnEditRcTs.sizeDelta = new Vector2(lineOnEditRcTs.sizeDelta.x, 
@@ -137,11 +127,13 @@ public class PatternManger : MonoBehaviour
     {
         //Debug.Log(idf.id); 
     }
+
     public void OnMouseDownCircle(CircleIdentifier idf)
     {
         unlocking = true; 
         TrySetLineEdit(idf); 
     }
+
     public void OnMouseUpCircle(CircleIdentifier idf)
     {
          if(enabled == false)
@@ -157,12 +149,9 @@ public class PatternManger : MonoBehaviour
                 pass.inputPattern.Add(line.id); 
             }
             
-            bool Verified = pass.VerifyPattern(); 
-            Debug.Log(Verified); 
-            //Load Next Scene or enable new pass manager
-
-            
-            
+           
+            //Debug.Log(Verified); 
+        
             Destroy(lines[lines.Count -1].gameObject); 
             lines.RemoveAt(lines.Count -1);
 
@@ -171,10 +160,6 @@ public class PatternManger : MonoBehaviour
                 EnableColorFade(line.GetComponent<Animator>()); 
             }
             StartCoroutine(Release()); 
-            // if(passInt == 0 && Verified == true){
-            //     passCtrl.NextLock(); 
-            //     passInt += 1; 
-            // }
         }
         unlocking = false; 
     }
