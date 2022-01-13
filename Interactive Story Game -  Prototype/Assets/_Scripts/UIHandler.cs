@@ -49,4 +49,12 @@ public class UIHandler : MonoBehaviour
         //Time.timeScale = 1.0f; 
         gameIsPaused = false; 
     }
+
+    public void DisableUI()
+
+    {
+        play.SetActive(false); 
+        controls.SetActive(false); 
+        pause.SetActive(false); 
+    }
 }

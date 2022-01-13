@@ -20,6 +20,9 @@ public class PatternManger : MonoBehaviour
     private bool unlocking; 
     private bool enabled = true; 
 
+    [SerializeField]
+    private GameObject image; 
+
     void Start()
     {
         circles = new Dictionary<int, CircleIdentifier>(); 
@@ -33,6 +36,7 @@ public class PatternManger : MonoBehaviour
             identifier.id = i; 
             circles.Add(i, identifier); 
         }
+        image.SetActive(true); 
     }
 
     void Update()
@@ -107,6 +111,7 @@ public class PatternManger : MonoBehaviour
         circleOnEdit = null;
         pass.VerifyPattern(); 
         pass.inputPattern.Clear(); 
+        image.SetActive(false); 
         enabled = true; 
     }
 

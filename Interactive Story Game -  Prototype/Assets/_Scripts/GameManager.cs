@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video; 
+using UnityEngine.SceneManagement; 
 
 public class GameManager : MonoBehaviour
 {
@@ -73,12 +74,7 @@ public class GameManager : MonoBehaviour
 
             case State.Puzzle: 
             Debug.Log(state); 
-            //puzzle.SetActive(true);
-            //Enable puzzle UI
-            //clips[2].SetActive(true); 
-            clips[1].SetActive(false); 
-            clips[2].SetActive(true); 
-            clips[1].SetActive(false); 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
     
             break; 
 
