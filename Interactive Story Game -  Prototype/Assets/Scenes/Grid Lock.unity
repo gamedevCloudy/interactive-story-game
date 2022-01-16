@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 77349475}
   - component: {fileID: 77349474}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Instruction 05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1581,14 +1581,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0596512b93690458c98cf30f6fe71df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctPattern: 000000000100000002000000
-  inputPattern: 
-  patternGrids:
-  - {fileID: 183329614}
-  - {fileID: 1537905347}
-  currentPassId: 0
   wrongAnswer: {fileID: 1685866285}
   correctAns: {fileID: 258222939}
+  correctPattern: 000000000100000002000000
+  inputPattern: 
+  patternInputGrids:
+  - {fileID: 183329614}
+  - {fileID: 1537905347}
+  currentPassId: 1
 --- !u!1 &184495408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,8 +1684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31a6887b182a4bfcaff0be02fa1fb33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipA: {fileID: 927748275}
-  clipB: {fileID: 851612841}
+  lightKissClip: {fileID: 927748275}
+  deepKissClip: {fileID: 851612841}
 --- !u!4 &201460669
 Transform:
   m_ObjectHideFlags: 0
@@ -1712,7 +1712,7 @@ GameObject:
   - component: {fileID: 228750775}
   - component: {fileID: 228750774}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Instruction 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1974,7 +1974,7 @@ GameObject:
   - component: {fileID: 258222942}
   - component: {fileID: 258222941}
   m_Layer: 5
-  m_Name: Corrct Ansert
+  m_Name: Correct Answer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3853,14 +3853,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0596512b93690458c98cf30f6fe71df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctPattern: 010000000300000007000000
-  inputPattern: 
-  patternGrids:
-  - {fileID: 579517452}
-  - {fileID: 1219457536}
-  currentPassId: 0
   wrongAnswer: {fileID: 1685866285}
   correctAns: {fileID: 258222939}
+  correctPattern: 010000000300000007000000
+  inputPattern: 
+  patternInputGrids:
+  - {fileID: 579517452}
+  - {fileID: 1219457536}
+  currentPassId: 3
 --- !u!1 &622394614
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,7 +3873,7 @@ GameObject:
   - component: {fileID: 622394617}
   - component: {fileID: 622394616}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Insturction 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4197,13 +4197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0596512b93690458c98cf30f6fe71df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctPattern: 020000000700000006000000
-  inputPattern: 
-  patternGrids:
-  - {fileID: 704996174}
-  currentPassId: 5
   wrongAnswer: {fileID: 1685866285}
   correctAns: {fileID: 258222939}
+  correctPattern: 020000000700000006000000
+  inputPattern: 
+  patternInputGrids:
+  - {fileID: 704996174}
+  currentPassId: 5
 --- !u!1 &712320666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6697,7 +6697,7 @@ GameObject:
   - component: {fileID: 1083119349}
   - component: {fileID: 1083119348}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Instruction 04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7021,14 +7021,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0596512b93690458c98cf30f6fe71df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctPattern: 030000000100000008000000
-  inputPattern: 
-  patternGrids:
-  - {fileID: 1219457536}
-  - {fileID: 704996174}
-  currentPassId: 0
   wrongAnswer: {fileID: 1685866285}
   correctAns: {fileID: 258222939}
+  correctPattern: 030000000100000008000000
+  inputPattern: 
+  patternInputGrids:
+  - {fileID: 1219457536}
+  - {fileID: 704996174}
+  currentPassId: 4
 --- !u!1 &1265869696
 GameObject:
   m_ObjectHideFlags: 0
@@ -8225,14 +8225,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0596512b93690458c98cf30f6fe71df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctPattern: 000000000300000001000000
-  inputPattern: 
-  patternGrids:
-  - {fileID: 1537905347}
-  - {fileID: 579517452}
-  currentPassId: 0
   wrongAnswer: {fileID: 1685866285}
   correctAns: {fileID: 258222939}
+  correctPattern: 000000000300000001000000
+  inputPattern: 
+  patternInputGrids:
+  - {fileID: 1537905347}
+  - {fileID: 579517452}
+  currentPassId: 2
 --- !u!1 &1544895702
 GameObject:
   m_ObjectHideFlags: 0
@@ -9397,7 +9397,7 @@ GameObject:
   - component: {fileID: 1950299324}
   - component: {fileID: 1950299323}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Instruction 03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10154,7 +10154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2113069514}
   m_Layer: 5
-  m_Name: ImageHolder
+  m_Name: Instruction Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10232,12 +10232,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

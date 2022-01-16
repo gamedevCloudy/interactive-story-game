@@ -5,17 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class PasswordManager : MonoBehaviour
 {
+    [Header("Answer Text - UI")]
+    [SerializeField]
+    private GameObject wrongAnswer; 
+    [SerializeField]
+    private GameObject correctAns; 
+
+    [Header("Answers")]
     public List<int> correctPattern; 
     public List<int> inputPattern; 
-    // Start is called before the first frame update
+   
+    [Header("Pattern Input Grids")]
     [SerializeField] 
-    private GameObject[] patternGrids; 
+    private GameObject[] patternInputGrids; 
     [SerializeField]
     private int currentPassId = 0; 
 
-    public GameObject wrongAnswer; 
-    public GameObject correctAns; 
-
+    
     public void VerifyPattern()
     {
         if(correctPattern[0] == inputPattern[0] )
@@ -24,9 +30,8 @@ public class PasswordManager : MonoBehaviour
             {
                 if(correctPattern[2] == inputPattern[2])
                 {
-                   // return true; 
                    Debug.Log("Correct");
-                   StartCoroutine(NextGridLock()); 
+                   StartCoroutine(NextInputGrid()); 
                 }
             }  
         }
@@ -36,9 +41,8 @@ public class PasswordManager : MonoBehaviour
             {
                 if(correctPattern[2] == inputPattern[0])
                 {
-                    //return true; 
                     Debug.Log("Correct");
-                    StartCoroutine(NextGridLock()); 
+                    StartCoroutine(NextInputGrid()); 
                 }
             }
         }
@@ -48,17 +52,15 @@ public class PasswordManager : MonoBehaviour
 
     }
 
-    IEnumerator NextGridLock()
+    IEnumerator NextInputGrid()
     {
         correctAns.SetActive(true); 
         yield return new WaitForSeconds(2); 
         correctAns.SetActive(false); 
-        //Load Next Pattern
-        patternGrids[0].SetActive(false);
-        //currentPassGrid +=1; 
-        if(currentPassId != 5)patternGrids[1].SetActive(true); 
+        patternInputGrids[0].SetActive(false);
+
+        if(currentPassId != 5)patternInputGrids[1].SetActive(true); 
         else { 
-            // load next scnene
             Debug.Log(" Loading next scene!!!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         } 
@@ -70,6 +72,7 @@ public class PasswordManager : MonoBehaviour
         wrongAnswer.SetActive(true); 
         yield return new WaitForSeconds(1); 
         wrongAnswer.SetActive(false); 
+        
         inputPattern.Clear(); 
     }
 }

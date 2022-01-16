@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChatSystem : MonoBehaviour
+public class chatControllertem : MonoBehaviour
 {
     public enum ChatState{ //each chat state denotes one character/talk from the player and its response
         cs01,
@@ -28,13 +28,7 @@ public class ChatSystem : MonoBehaviour
     private int dis1 = 0;
     private int dis2 = 0;   
     private int dis3 = 0; 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
+   
     void Update()
     {
         ChatContoller();     

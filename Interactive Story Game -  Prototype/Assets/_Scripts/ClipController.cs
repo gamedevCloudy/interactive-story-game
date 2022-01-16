@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class ClipController : MonoBehaviour
 {
-    public GameObject clipA;
-    public GameObject clipB; 
+    [Header("reactionClip - Stella's Reactions")]
+    [SerializeField]
+    private GameObject lightKissClip;
+    [SerializeField]
+    private GameObject deepKissClip; 
 
-    float startTimer; 
-    int rand = 0; 
-    
-    // Update is called once per frame
+    private float startTimer; 
+    private int rand = 0; 
+
     void Update()
     {
         startTimer += Time.deltaTime; 
 
         if(startTimer > 30 && rand == 0 )
         {
-            Debug.Log("Stella ka hila");
-            clipB.SetActive(true); 
-            clipA.SetActive(false); 
+            deepKissClip.SetActive(true); 
+            lightKissClip.SetActive(false); 
             rand += 1; 
         }
     }

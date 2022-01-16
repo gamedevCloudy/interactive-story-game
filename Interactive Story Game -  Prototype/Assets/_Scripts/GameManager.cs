@@ -7,38 +7,30 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private enum State{
-        Intro, First_Talk, Puzzle, Last_Talk, Final
+        Intro, First_Talk, Puzzle,
     }
-    State state;
+    private State state;
+    
     [SerializeField]
-    private GameObject[] clips; 
+    private GameObject[] reactionClip; 
     float timeSinceStart = 0; 
 
-    [Header("Chat Events Objects")]
     [SerializeField]
-    private ChatEventController chatSys; 
-    [SerializeField]
-    private ChatEventController chatSys1; 
-
+    private ChatEventController chatController; 
+   
     [SerializeField]
     private GameObject chatButtons; 
     int chatCtrl = 0; 
-    [SerializeField]
-    private GameObject chatButtons1; 
-    int chat2Ctrl = 0; 
 
     [Header("UI Objects")]
     public GameObject pause; 
     public GameObject puzzle; 
    
-
-  
-
-
     private void Start()
     {
         state = State.Intro; 
     }
+    
     private void Update()
     {
         StateHandler(); 
@@ -59,11 +51,11 @@ public class GameManager : MonoBehaviour
 
             case State.First_Talk: 
 
-            clips[1].SetActive(true); //Breathing Animation
-            clips[0].SetActive(false);  
+            reactionClip[1].SetActive(true); //Breathing Animation
+            reactionClip[0].SetActive(false);  
             Debug.Log(state); 
             
-            chatSys.enabled = true; 
+            chatController.enabled = true; 
             if(chatCtrl == 0)
             {
                 pause.SetActive(true); 
@@ -75,26 +67,8 @@ public class GameManager : MonoBehaviour
             case State.Puzzle: 
             Debug.Log(state); 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
-    
             break; 
-
-
-            case State.Last_Talk:
-            puzzle.SetActive(false); //Disable Previous State
-            clips[5].SetActive(true);
-            clips[4].SetActive(false);   
-            chatSys1.enabled = true; 
-            if(chat2Ctrl == 0)
-            {
-                pause.SetActive(true); 
-                chatButtons1.SetActive(true); 
-                chat2Ctrl += 1; 
-            }
-            chatButtons1.SetActive(true); 
-            break;  
-
-            case State.Final: 
-            break; 
+            
             default:
             break; 
 
@@ -105,10 +79,5 @@ public class GameManager : MonoBehaviour
     {
         chatButtons.SetActive(false); 
         state = State.Puzzle; 
-    }
-
-    public void Finale()
-    {
-        state = State.Final; 
     }
 }

@@ -7,44 +7,45 @@ public class ChatEventController : MonoBehaviour
     [SerializeField]
     private GameManager manager; 
     [SerializeField] 
-    private Transform chatHolder; 
-    private int currentChatEvent = 0; 
+    private Transform chatContainer; 
+    
+    private int currentMessageIndex = 0; 
   
     void Start()
     {
-        chatHolder.GetChild(currentChatEvent).gameObject.SetActive(true); 
+        chatContainer.GetChild(currentMessageIndex).gameObject.SetActive(true); 
     }
 
     public void NextChat()
     {
-        if(currentChatEvent < (chatHolder.childCount -1))
+        if(currentMessageIndex < (chatContainer.childCount -1))
         {
-            if(currentChatEvent < 0) currentChatEvent = 0;
-            chatHolder.GetChild(currentChatEvent).gameObject.SetActive(false); 
-            currentChatEvent += 1; 
-            Debug.Log(currentChatEvent + " Chat");
-            chatHolder.GetChild((currentChatEvent)).gameObject.SetActive(true);      
+            if(currentMessageIndex < 0) currentMessageIndex = 0;
+            chatContainer.GetChild(currentMessageIndex).gameObject.SetActive(false); 
+            currentMessageIndex += 1; 
+            Debug.Log(currentMessageIndex + " Chat");
+            chatContainer.GetChild((currentMessageIndex)).gameObject.SetActive(true);      
         }
-        if(currentChatEvent >= 6)
+        if(currentMessageIndex >= 6)
         {
             StartCoroutine("PuzzleState"); 
         }
     }  
     public void PreviousChat()
     {
-        if( currentChatEvent > 0)
+        if( currentMessageIndex > 0)
         {
-        chatHolder.GetChild(currentChatEvent).gameObject.SetActive(false);
-        currentChatEvent -= 1; 
-        Debug.Log(currentChatEvent + " Chat");
-        chatHolder.GetChild((currentChatEvent)).gameObject.SetActive(true); 
+        chatContainer.GetChild(currentMessageIndex).gameObject.SetActive(false);
+        currentMessageIndex -= 1; 
+        Debug.Log(currentMessageIndex + " Chat");
+        chatContainer.GetChild((currentMessageIndex)).gameObject.SetActive(true); 
         }
     }
 
     IEnumerator PuzzleState()
     {
         yield return new WaitForSeconds(2); 
-        chatHolder.gameObject.SetActive(false); 
+        chatContainer.gameObject.SetActive(false); 
         manager.SetPuzzle(); 
     }
 }

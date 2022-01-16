@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PatternManger : MonoBehaviour
 {
-    //public PasswordController passCtrl; 
-    //private int passInt = 0; 
+    [Header("Password Requrements")]
     public PasswordManager pass; 
     public GameObject linePrefab; 
     public Canvas canvas; 
@@ -48,6 +47,7 @@ public class PatternManger : MonoBehaviour
         if(unlocking)
         {
             Vector3 mousePos = canvas.transform.InverseTransformPoint(Input.mousePosition);
+            
             lineOnEditRcTs.sizeDelta = new Vector2(lineOnEditRcTs.sizeDelta.x, 
                 Vector3.Distance(mousePos, circleOnEdit.transform.localPosition));   
             lineOnEditRcTs.rotation = Quaternion.FromToRotation(
@@ -100,12 +100,13 @@ public class PatternManger : MonoBehaviour
             circle.Value.GetComponent<UnityEngine.UI.Image>().color = Color.white; 
             circle.Value.GetComponent<Animator>().enabled = false; 
         }
+
         foreach(var line in lines)
         {
             Destroy(line.gameObject); 
         }
+        
         lines.Clear(); 
-
         lineOnEdit = null; 
         lineOnEditRcTs = null; 
         circleOnEdit = null;
@@ -128,10 +129,6 @@ public class PatternManger : MonoBehaviour
             TrySetLineEdit(idf); 
         }
     }
-    public void OnMouseExitCircle(CircleIdentifier idf)
-    {
-        //Debug.Log(idf.id); 
-    }
 
     public void OnMouseDownCircle(CircleIdentifier idf)
     {
@@ -150,13 +147,10 @@ public class PatternManger : MonoBehaviour
             foreach( var line in lines)
             {
                 EnableColorFade( circles[line.id].gameObject.GetComponent<Animator>()); 
-                //check password
+                //Add the line id (circle's index to pattern)
                 pass.inputPattern.Add(line.id); 
             }
-            
            
-            //Debug.Log(Verified); 
-        
             Destroy(lines[lines.Count -1].gameObject); 
             lines.RemoveAt(lines.Count -1);
 

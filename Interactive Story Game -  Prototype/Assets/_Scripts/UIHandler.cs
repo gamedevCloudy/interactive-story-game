@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class UIHandler : MonoBehaviour
 {
-    public GameObject play; 
-    public GameObject pause; 
+    [Header("Buttons")]
+    [SerializeField]
+    private GameObject play; 
+    [SerializeField]
+    private GameObject pause; 
+    [SerializeField]
+    private GameObject controls;
 
-    public GameObject controls;
-    public GameObject controls2; 
-    public GameObject darkScreen;
+    [SerializeField]
+    private GameObject darkScreen;
 
     private bool gameIsPaused; 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
          if(gameIsPaused)
@@ -37,21 +35,19 @@ public class UIHandler : MonoBehaviour
         controls.SetActive(false); 
         play.SetActive(true); 
         darkScreen.SetActive(true); 
-        //Time.timeScale = 0.0f; 
         gameIsPaused = true; 
     }
-     public void PlayGame()
+
+    public void PlayGame()
     {
         play.SetActive(false); 
         pause.SetActive(true);
         controls.SetActive(true); 
         darkScreen.SetActive(false); 
-        //Time.timeScale = 1.0f; 
         gameIsPaused = false; 
     }
 
     public void DisableUI()
-
     {
         play.SetActive(false); 
         controls.SetActive(false); 

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class FinalSceneController : MonoBehaviour
 {
-    public GameObject exitButton; 
-    public GameObject finalVideo; 
+    [SerializeField] 
+    private GameObject exitButton; 
+    [SerializeField] 
+    private GameObject finalVideo; 
 
-    public UIHandler handler; 
+    [SerializeField] 
+    private UIHandler handler; 
     [SerializeField] 
     private Transform chatHolder; 
     private int currentChatEvent = 0; 
-
-
   
     void Start()
     {
@@ -26,15 +27,15 @@ public class FinalSceneController : MonoBehaviour
             if(currentChatEvent < 0) currentChatEvent = 0;
             chatHolder.GetChild(currentChatEvent).gameObject.SetActive(false); 
             currentChatEvent += 1; 
+           
             Debug.Log(currentChatEvent + " Chat");
+            
             chatHolder.GetChild((currentChatEvent)).gameObject.SetActive(true);      
         }
         if(currentChatEvent >= 4)
         {
-           // StartCoroutine("PuzzleState");
            chatHolder.GetChild(currentChatEvent).gameObject.SetActive(false);
-           //DisableUI; 
-           //Play Final video
+        
             finalVideo.SetActive(true); 
             exitButton.SetActive(true); 
             handler.DisableUI(); 
@@ -44,10 +45,12 @@ public class FinalSceneController : MonoBehaviour
     {
         if( currentChatEvent > 0)
         {
-        chatHolder.GetChild(currentChatEvent).gameObject.SetActive(false);
-        currentChatEvent -= 1; 
-        Debug.Log(currentChatEvent + " Chat");
-        chatHolder.GetChild((currentChatEvent)).gameObject.SetActive(true); 
+            chatHolder.GetChild(currentChatEvent).gameObject.SetActive(false);
+            currentChatEvent -= 1; 
+        
+            Debug.Log(currentChatEvent + " Chat");
+            
+            chatHolder.GetChild((currentChatEvent)).gameObject.SetActive(true); 
         }
     }
 
